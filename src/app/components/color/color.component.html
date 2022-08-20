@@ -1,17 +1,18 @@
-<div
-  *ngIf="dataLoaded == false"
-  class="spinner-border text-primary"
-  role="status"
->
+<div *ngIf="dataLoaded==false" class="spinner-border text-primary" role="status">
   <span class="visually-hidden">Loading...</span>
 </div>
-<table class="table">
-<thead>
-  <tr>
-    <h4> Renk Adı </h4>
-  </tr>
-</thead>
-<div *ngFor="let color of colors" class="list-group">
-  <a href="#" class="list-group-item list-group-item-action">{{ color.colorName }}</a>
-</div>
-</table>
+
+<ul class="list-group">
+  <li routerLink="/cars"
+  [class]="getAllColorClass()"
+ 
+  > Tüm Renkler </li>
+  <li routerLink="/cars/color/{{color.colorId}}"
+   (click)="setCurrentColor(color)"
+  *ngFor="let color of colors" 
+  [class]="getCurrentColorClass(color)">{{color.colorName}}</li>
+</ul>
+
+
+
+<h6 *ngIf="currentColor">{{ currentColor.colorName }} Seçtiniz</h6>

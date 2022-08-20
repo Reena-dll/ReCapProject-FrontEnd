@@ -11,6 +11,7 @@ export class BrandComponent implements OnInit {
 
   dataLoaded = false
   brands:Brand[] = [];
+  currentBrand : Brand;
   
   constructor(private brandService : BrandService) { }
 
@@ -25,5 +26,28 @@ export class BrandComponent implements OnInit {
     })
   }
 
+  setCurrentBrand(brand : Brand){
+    this.currentBrand = brand;
+  }
+
+  getCurrentBrandClass(brand:Brand){
+    if(brand==this.currentBrand){
+      return "list-group-item active"
+    }else{
+      return "list-group-item" 
+    }
+  }
+
+  getAllCategoryClass(){
+    if(!this.currentBrand){
+      return "list-group-item active"
+    }else{
+      return "list-group-item" 
+    }
+  }
+
+  setClearCurrentBrand(){
+    this.currentBrand == null
+  }
   
 }

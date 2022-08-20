@@ -1,17 +1,18 @@
-<div
-  *ngIf="dataLoaded == false"
-  class="spinner-border text-primary"
-  role="status"
->
+<div *ngIf="dataLoaded==false" class="spinner-border text-primary" role="status">
   <span class="visually-hidden">Loading...</span>
 </div>
-<table class="table">
-<thead>
-  <tr>
-    <h4> Marka Adı </h4>
-  </tr>
-</thead>
-<div *ngFor="let brand of brands" class="list-group">
-  <a href="#" class="list-group-item list-group-item-action">{{ brand.brandName }}</a>
-</div>
-</table>
+
+<ul class="list-group">
+  <li routerLink="/cars"
+  [class]="getAllCategoryClass()"
+  (click)="setClearCurrentBrand()"
+  > Tüm Ürünler </li>
+  <li routerLink="/cars/brand/{{brand.brandId}}"
+   (click)="setCurrentBrand(brand)"
+  *ngFor="let brand of brands" 
+  [class]="getCurrentBrandClass(brand)">{{brand.brandName}}</li>
+</ul>
+
+
+
+<h6 *ngIf="currentBrand">{{ currentBrand.brandName }} Seçtiniz</h6>

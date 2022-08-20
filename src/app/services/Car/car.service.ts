@@ -9,12 +9,23 @@ import { ListResponseModel } from '../../models/listResponseModel';
   providedIn: 'root'
 })
 export class CarService {
-  apiUrl = 'https://localhost:44329/api/cars/GetCarDetailDto'
+  apiUrl = 'https://localhost:44329/api/'
 
   constructor(private httpClient:HttpClient) { }
 
   getCars(): Observable<ListResponseModel<CarDetailDto>>{
-   return this.httpClient.get<ListResponseModel<CarDetailDto>>(this.apiUrl)
+    let newPath= this.apiUrl +"cars/GetCarDetailDto"
+   return this.httpClient.get<ListResponseModel<CarDetailDto>>(newPath)
   }
+
+  getCarsByBrand(brandId:number): Observable<ListResponseModel<CarDetailDto>>{
+    let newPath=this.apiUrl +"cars/GetCarsByBrandIdDto?brandid="+brandId
+    return this.httpClient.get<ListResponseModel<CarDetailDto>>(newPath)
+   }
+
+   getCarsByColor(colorId:number) : Observable<ListResponseModel<CarDetailDto>>{
+    let newPath=this.apiUrl +"cars/GetCarsByColorIdDto?colorid="+colorId
+    return this.httpClient.get<ListResponseModel<CarDetailDto>>(newPath);
+   }
 
 }
