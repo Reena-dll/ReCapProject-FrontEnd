@@ -1,28 +1,19 @@
-<div
-  *ngIf="dataLoaded == false"
-  class="spinner-border text-primary"
-  role="status"
->
-  <span class="visually-hidden">Loading...</span>
+<div  class="row d-flex pt-5 ps-5">
+  <div 
+    class="card col-3 m-1 me-5 bg-dark p-1"
+    *ngFor="let carDetailDto of carDetailsDto"   
+  >
+  <div *ngIf="carDetailDto.imagePath!=null">
+    <img src="https://localhost:44329/uploads/images/{{carDetailDto.imagePath}}" class="card-img-top" alt="..." >
+  </div>
+  <div *ngIf="carDetailDto.imagePath==null">
+    <img src="https://localhost:44329/uploads/default.png" class="card-img-top" alt="..." >
+  </div>
+    <div class="card-body d-flex flex-column align-items-center">
+      <h5 class="card-title text-center app__card-title text-light">{{carDetailDto.brandName}}  {{carDetailDto.description}}</h5>
+      <p class="card-text text-center text-light">{{carDetailDto.modelYear}}</p>
+      <p class="card-text text-center app__card-price text-light">${{carDetailDto.dailyPrice}}</p>
+      <a routerLink="/car/{{carDetailDto.id}}" class="btn btn-secondary"  >View More</a>
+    </div>
+  </div>
 </div>
-
-<table class="table">
-  <thead>
-    <tr>
-      <th>Car Name</th>
-      <th>Brand Name</th>
-      <th>Color Name</th>
-      <th>Model Year</th>
-      <th>Daily Price</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tr *ngFor="let carDetailDto of carDetailsDto">
-    <td>{{ carDetailDto.name }}</td>
-    <td>{{ carDetailDto.brandName }}</td>
-    <td>{{ carDetailDto.colorName }}</td>
-    <td>{{ carDetailDto.modelYear }}</td>
-    <td>{{ carDetailDto.dailyPrice }}</td>
-    <td>{{ carDetailDto.description }}</td>
-  </tr>
-</table>

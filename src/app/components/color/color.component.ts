@@ -13,6 +13,7 @@ export class ColorComponent implements OnInit {
   dataLoaded = false;
   colors:Color[] =[];
   currentColor : Color;
+  emptyColor : Color;
   ngOnInit(): void {
     this.getColor()
   }
@@ -25,26 +26,27 @@ export class ColorComponent implements OnInit {
   }
 
 
-  setCurrentColor(color:Color){
-    this.currentColor = color
+  setCurrentBrand(color:Color){
+    this.currentColor = color;
   }
 
-  getCurrentColorClass(color:Color){
-    if(color==this.currentColor){
-      return "list-group-item active"
+  getCurrentBrandClass(color:Color){
+    if(color == this.currentColor){
+      return 'list-group-item bg-dark text-white ';
     }else{
-      return "list-group-item" 
+      return 'list-group-item ';
     }
   }
-
   getAllColorClass(){
     if(!this.currentColor){
-      return "list-group-item active"
+      return 'list-group-item bg-dark text-white ';
     }else{
-      return "list-group-item" 
+      return 'list-group-item ';
     }
   }
-
+  clearCurrentColor(){
+    this.currentColor = this.emptyColor;
+  }
  
 
 }

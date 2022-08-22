@@ -1,18 +1,18 @@
-<div *ngIf="dataLoaded==false" class="spinner-border text-primary" role="status">
-  <span class="visually-hidden">Loading...</span>
-</div>
-
+<div class="bg-secondary text-white btn w-100 mt-1 mb-1">Colors</div>
 <ul class="list-group">
-  <li routerLink="/cars"
-  [class]="getAllColorClass()"
- 
-  > Tüm Renkler </li>
-  <li routerLink="/cars/color/{{color.colorId}}"
-   (click)="setCurrentColor(color)"
-  *ngFor="let color of colors" 
-  [class]="getCurrentColorClass(color)">{{color.colorName}}</li>
+    <li 
+    routerLink="/cars"
+    [class]="getAllColorClass()"
+    (click) = "clearCurrentColor()"
+  >
+  All Colors
+  </li>
+  <li 
+    *ngFor="let color of colors" 
+    routerLink="/cars/color/{{color.colorId}}"
+    [class]="getCurrentBrandClass(color)"
+    (click) = 'setCurrentBrand(color)'
+  >
+    {{color.colorName}}
+  </li>
 </ul>
-
-
-
-<h6 *ngIf="currentColor">{{ currentColor.colorName }} Seçtiniz</h6>
