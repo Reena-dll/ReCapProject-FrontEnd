@@ -1,19 +1,46 @@
-<div  class="row d-flex pt-5 ps-5">
-  <div 
+<div class="row d-flex pt-1 ps-5">
+  <div
     class="card col-3 m-1 me-5 bg-dark p-1"
-    *ngFor="let carDetailDto of carDetailsDto"   
+    *ngFor="let carDetailDto of carDetailsDto"
   >
-  <div *ngIf="carDetailDto.imagePath!=null">
-    <img src="https://localhost:44329/uploads/images/{{carDetailDto.imagePath}}" class="card-img-top" alt="..." >
-  </div>
-  <div *ngIf="carDetailDto.imagePath==null">
-    <img src="https://localhost:44329/uploads/default.png" class="card-img-top" alt="..." >
-  </div>
+    <div
+    
+      *ngIf="carDetailDto.imagePath != null"
+    >
+      <img
+      style="max-width: 215px; max-height: 175px; margin: 5px;"
+        src="https://localhost:44329/uploads/images/{{
+          carDetailDto.imagePath
+        }}"
+        class="card-img-top"
+        alt="..."
+      />
+    </div>
+    <div
+  
+      *ngIf="carDetailDto.imagePath == null"
+    >
+      <img
+      style="max-width: 205px; max-height: 205px; margin: 5px; "
+        src="https://localhost:44329/uploads/default.png"
+        class="card-img-top"
+        alt="..."
+      />
+    </div>
     <div class="card-body d-flex flex-column align-items-center">
-      <h5 class="card-title text-center app__card-title text-light">{{carDetailDto.brandName}}  {{carDetailDto.description}}</h5>
-      <p class="card-text text-center text-light">{{carDetailDto.modelYear}}</p>
-      <p class="card-text text-center app__card-price text-light">${{carDetailDto.dailyPrice}}</p>
-      <a routerLink="/car/{{carDetailDto.id}}" class="btn btn-secondary"  >View More</a>
+      <h6 class="card-title text-center app__card-title text-light">
+        {{ carDetailDto.brandName }} {{ carDetailDto.name }}
+      </h6>
+      <p class="card-text text-center text-light">
+        {{ carDetailDto.modelYear }}
+      </p>
+     
+      <p class="card-text text-center app__card-price text-light">
+        ${{ carDetailDto.dailyPrice }}
+      </p>
+      <a routerLink="/cars/{{ carDetailDto.carId }}" class="btn btn-secondary"
+        >View More</a
+      >
     </div>
   </div>
 </div>
