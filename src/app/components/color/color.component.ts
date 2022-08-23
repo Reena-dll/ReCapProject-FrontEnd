@@ -26,11 +26,11 @@ export class ColorComponent implements OnInit {
   }
 
 
-  setCurrentBrand(color:Color){
+  setCurrentColor(color:Color){
     this.currentColor = color;
   }
 
-  getCurrentBrandClass(color:Color){
+  getCurrentColor(color:Color){
     if(color == this.currentColor){
       return 'list-group-item bg-dark text-white ';
     }else{
